@@ -1,10 +1,10 @@
 "use client";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Divider } from "@chakra-ui/react";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import NavBar from "./Componant/NavBar";
 import Footer from "./Componant/Footer";
-
+import Wrapper from "./Context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,9 +17,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ChakraProvider>
-          <NavBar />
-          {children}
-          <Footer />
+          <Wrapper>
+            <NavBar />
+            {children}
+            <Footer />
+          </Wrapper>
         </ChakraProvider>
       </body>
     </html>

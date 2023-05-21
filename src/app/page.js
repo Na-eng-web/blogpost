@@ -1,11 +1,16 @@
 "use client";
-import { Box, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import BlogCard from "./Componant/BlogCard";
+import Link from "next/link";
+
+import { UseCart } from "./Context";
 
 export default function Home() {
+  const { item, setItem, setItemnumber, data } = UseCart();
   return (
     <Box p={4}>
       <Text>React Blog Post</Text>
-      <Grid
+      {/* <Grid
         templateAreas={{
           lg: `"header f"
           "header s"
@@ -16,44 +21,43 @@ export default function Home() {
         gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
         gridGap={1}
       >
-        <GridItem area={"header"} bg={"red"}>
-          main
+        <GridItem minH={"5xl"} area={"header"} bg={"red"}>
+          <BlogCard />
         </GridItem>
         <GridItem area={"f"} bg={"green"}>
-          f
+          <BlogCard />
         </GridItem>
         <GridItem area={"s"} bg={"blue"}>
           s
+          <BlogCard />
         </GridItem>
         <GridItem area={"t"} bg={"yellow"}>
           t
         </GridItem>
-      </Grid>
+      </Grid> */}
       <text>All blog</text>
       <SimpleGrid
         justifyItems={"center"}
-        columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
+        alignItems={"center"}
+        columns={{ sm: 1, md: 2, lg: 2, xl: 3 }}
         // padding="10px"
         spacing={6}
       >
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
-        <Box boxSize={"8rem"} bg={"tomato"}>
-          a
-        </Box>
+        {data.data &&
+          data.data.articles.map((e, index) => {
+            return (
+              <Link
+                onClick={() => {
+                  setItem(e);
+                  setItemnumber(index + 1);
+                }}
+                key={index}
+                href={"/body"}
+              >
+                <BlogCard data={e} />
+              </Link>
+            );
+          })}
       </SimpleGrid>
     </Box>
   );

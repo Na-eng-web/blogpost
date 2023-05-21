@@ -12,6 +12,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { BsFacebook } from "react-icons/bs";
+import { AiFillTwitterCircle, AiFillInfoCircle } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -33,11 +35,9 @@ const Footer = () => {
         <Heading>Untitiled Ui</Heading>
         <Text>Design amezing webstit using saasfaf</Text>
         <HStack>
-          <Text>a</Text>
-          <Text>b</Text>
-          <Text>c</Text>
-          <Text>d</Text>
-          <Text>e</Text>
+          <Icon as={BsFacebook}></Icon>
+          <Icon as={AiFillTwitterCircle}></Icon>
+          <Icon as={AiFillInfoCircle}></Icon>
         </HStack>
       </VStack>
     </Box>
